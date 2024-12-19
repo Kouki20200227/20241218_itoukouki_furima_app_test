@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use PharIo\Manifest\Author;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthorController::class, 'index']);
 });
 
+Route::get('/', [AuthorController::class, 'index']);
 Route::get('/profile', [AuthorController::class, 'profile']);
