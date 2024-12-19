@@ -1,0 +1,48 @@
+.login__content{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.login__ttl{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10vh;
+}
+
+.login__form{
+    width: 100%;
+}
+.input__group{
+    margin-top: 5vh;
+    text-align: left;
+}
+.input__group--txt{
+    width: 100%;
+    padding: 2vh 2vw;
+    font-weight: bold;
+}
+.form__group--error{
+    color: red;
+}
+.button__group{
+    width: 100%;
+    margin-top: 10vh;
+}
+.button__group--submit{
+    width: 100%;
+    padding: 2vh 2vw;
+    background-color: red;
+    color: white;
+    border: none;
+}
+.register__link{
+    width: 100%;
+    margin-top: 3vh;
+    text-align: center;
+}
+.register__link--txt{
+    color: skyblue;
+    text-decoration-line: none;
+    font-size: small;
+}

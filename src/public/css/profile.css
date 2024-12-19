@@ -1,0 +1,53 @@
+.profile__content{
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* プロフィール画像 */
+.image{
+    display: flex;
+}
+.input__img{
+    width: 20%;
+    height: 20%;
+}
+.input__img--pic{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.input__file{
+    margin: auto 0;
+}
+.input__file--dir{
+    color: red;
+    border-color: red;
+    border-radius: 10px;
+    padding: 2vh 2vw;
+}
+
+/* ユーザー名・郵便番号・住所・建物名 */
+.input__group{
+    margin-top: 5vh;
+    text-align: left;
+}
+.input__group--lbl{
+    font-weight: bold;
+}
+.input__group--txt{
+    padding: 2vh 2vw;
+    width: 100%;
+    border-radius: 5%;
+}
+.form__group--error{
+    color: red;
+}
+
+/* 更新ボタン */
+.button__group--submit{
+    width: 100%;
+    background-color: red;
+    color: white;
+    border-radius: 5%;
+    margin-top: 5vh;
+}

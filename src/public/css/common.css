@@ -1,0 +1,30 @@
+header{
+    background-color: black;
+    color: white;
+}
+
+.header__ttl{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+.ttl--txt{
+    width: 25%;
+}
+.logo--ttl{
+    font-weight: bolder;
+    font-size: large;
+}
+.header__search{
+    width: 25%;
+}
+.header__link{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+.sell__link{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
