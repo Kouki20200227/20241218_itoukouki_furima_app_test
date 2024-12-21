@@ -15,4 +15,9 @@ class AuthorController extends Controller
     public function profile(){
         return view('profile');
     }
+
+    // 商品出品ページ表示処理
+    public function sell(){
+        return view('sell');
+    }
 }
