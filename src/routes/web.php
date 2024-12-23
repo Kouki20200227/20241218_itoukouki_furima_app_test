@@ -22,3 +22,4 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [AuthorController::class, 'index']);
 Route::get('/mypage/profile', [AuthorController::class, 'profile']);
 Route::get('/sell', [AuthorController::class, 'sell']);
+Route::get('/item', [AuthorController::class, 'item']);

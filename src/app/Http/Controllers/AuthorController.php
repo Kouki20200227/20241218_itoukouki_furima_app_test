@@ -20,4 +20,9 @@ class AuthorController extends Controller
     public function sell(){
         return view('sell');
     }
+
+    // 商品詳細ページ表示
+    public function item(){
+        return view('item');
+    }
 }

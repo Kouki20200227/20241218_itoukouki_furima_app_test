@@ -68,6 +68,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     grid-row-gap: 2vh;
+    grid-column-gap: 0.5vw;
 }
 .category__items label {
     color: palevioletred;

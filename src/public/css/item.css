@@ -1,0 +1,143 @@
+.item__content {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+/* 商品画像 */
+.img__group {
+    margin: 15vh auto 0 auto;
+    width: 40vw;
+}
+.img__group--item {
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    background-color: gainsboro;
+    text-align: center;
+}
+
+/* 商品詳細一覧 */
+.detail__group {
+    width: 40vw;
+    margin: 10vh 0;
+}
+
+/* 購入手続きフォーム */
+.buy__form {
+    width: 100%;
+}
+.buy__form--ttl {
+    font-size: x-large;
+    font-weight: bolder;
+    margin: 0;
+}
+.buy__form--price {
+    font-size: x-large;
+}
+.mini {
+    font-size: small;
+}
+.buy__group {
+    display: flex;
+    margin-left: 5%;
+}
+.buy__items {
+    width: 10%;
+    text-align: center;
+}
+.buy__items--txt {
+    font-size: x-large;
+    margin: 0;
+}
+.buy__items--count {
+    font-size: smaller;
+}
+.buy__button{
+    margin-top: 5vh;
+}
+.buy__button--submit {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 1vh;
+    border: none;
+}
+
+/* 商品説明コンテンツ */
+.explanation__content--ttl {
+    font-size: larger;
+    font-weight: bolder;
+}
+.explanation__group--txt {
+    font-size: small;
+}
+.explanation__tag {
+    display: flex;
+    width: 100%;
+}
+.explanation__tag--ttl {
+    width: 15%;
+    font-weight: bold;
+    font-size: small;
+    margin-right: 5%;
+}
+.explanation__item {
+    width: 85%;
+    display: flex;
+}
+.explanation__item--category {
+    margin-right: 2%;
+    font-size: small;
+    background-color: rgb(203, 203, 203);
+    padding: 0 1vw;
+    border-radius: 20px;
+}
+.explanation__item--condition {
+    font-size: small;
+    padding: 0 1vw;
+}
+
+/* コメントグループ */
+.comment-user__tag {
+    display: flex;
+    align-items: center;
+}
+.comment-user__tag--img {
+    display: block;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    background-color: gainsboro;
+}
+.comment-user__tag--name {
+    margin-left: 2.5%;
+}
+.user-comment--tag{
+    width: 100%;
+    background-color: gainsboro;
+    padding: 1vh 1vw;
+}
+.comment__area--ttl{
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 0;
+}
+.comment__form{
+    width: 100%;
+}
+.input__group--txt{
+    width: 100%;
+    height: 10vh;
+}
+.button__group{
+    margin-top: 5vh;
+}
+.button__group--submit{
+    width: 100%;
+    padding: 1vh 0;
+    background-color: red;
+    color: white;
+    border: none;
+}
