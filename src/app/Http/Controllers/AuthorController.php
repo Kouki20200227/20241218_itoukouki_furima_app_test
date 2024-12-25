@@ -11,6 +11,11 @@ class AuthorController extends Controller
         return view('index');
     }
 
+    // プロフィールページ表示処理
+    public function mypage(){
+        return view('mypage');
+    }
+    
     // プロフィール設定ページ表示処理
     public function profile(){
         return view('profile');

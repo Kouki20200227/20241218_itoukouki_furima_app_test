@@ -1,0 +1,74 @@
+/* プロフィールフォーム */
+.profile__form {
+    display: flex;
+}
+.profile__group {
+    width: 25vw;
+    margin: 10vh 0 10vh 20vw;
+    display: flex;
+    justify-content: space-between;
+}
+.profile__group--img {
+    display: block;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    background-color: gainsboro;
+}
+.profile__group--user {
+    font-size: x-large;
+    font-weight: bolder;
+    margin: auto 0;
+}
+.profile__button {
+    margin: auto 0 auto 25vw;
+    width: 15vw;
+}
+.profile__button--submit {
+    font-size: larger;
+    color: red;
+    border-color: red;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1vh 1vw;
+}
+
+/* 出品・購入りスト表示 */
+/* .item__form{
+    width: 100vw;
+} */
+.item__ttl {
+    border-bottom: 2px solid grey;
+}
+.item__button {
+    display: flex;
+    justify-content: space-between;
+    width: 20vw;
+    margin: 0 auto 1vh 10vw;
+}
+.item__button--submit {
+    font-size: large;
+    font-weight: bold;
+    color: grey;
+    border: none;
+    background-color: white;
+}
+.item__output {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin: 5vh 0;
+}
+.output__items {
+    width: 20vw;
+    margin: 0 auto;
+    margin-bottom: 5vh;
+}
+.output__items--img {
+    display: block;
+    width: 20vw;
+    height: 20vw;
+    background-color: gainsboro;
+}
+.output__items--lbl {
+    text-align: left;
+}
