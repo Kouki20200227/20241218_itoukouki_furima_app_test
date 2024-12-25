@@ -1,0 +1,126 @@
+.purchase__content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5vh;
+}
+
+/* 購入情報フォーム */
+.detail__form {
+    width: 60vw;
+}
+.detail__group {
+    width: 100%;
+    padding-bottom: 5vh;
+    border-bottom: 2px solid gainsboro;
+}
+/* 商品名・画像 */
+.detail__group--img {
+    display: block;
+    width: 10vw;
+    height: 10vw;
+    background-color: gainsboro;
+}
+.item__group {
+    display: flex;
+}
+.item__tag {
+    margin-left: 5%;
+}
+.detail__tag--ttl {
+    font-size: larger;
+    font-weight: bolder;
+}
+.detail__tag--price {
+    font-size: larger;
+}
+/* 支払い方法選択 */
+.detail__group--ttl {
+    font-weight: bolder;
+    margin-left: 5%;
+}
+.select__group {
+    position: relative;
+    width: 30%;
+    margin-top: 5vh;
+    margin-left: 20%;
+}
+.select__group::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+    border-left: 0.5em solid transparent;
+    border-right: 0.5em solid transparent;
+    border-top: 0.5em solid gainsboro;
+    border-bottom: 0;
+    pointer-events: none;
+}
+.select__group--item {
+    width: 100%;
+    padding: 1%;
+    border-color: gainsboro;
+    -webkit-appearance: none;
+    appearance: none;
+}
+/* 配送先確認・変更 */
+.address__group {
+    display: flex;
+    justify-content: space-between;
+}
+.address__button {
+    margin: auto 0;
+    margin-right: 5%;
+}
+.address__button--submit {
+    font-size: medium;
+    border: none;
+    background-color: white;
+    color: rgb(45, 73, 255);
+}
+.address__tag {
+    margin-top: 5vh;
+    margin-left: 20%;
+}
+
+/* 購入フォーム */
+.purchase__form {
+    width: 30vw;
+}
+.purchase__table {
+    width: 100%;
+    border: 2px solid gainsboro;
+}
+tr {
+    width: 100%;
+    border: 2px solid gainsboro;
+}
+th {
+    width: 50%;
+    text-align: center;
+    font-weight: normal;
+}
+.table__header {
+    margin: 5vh 0;
+}
+td {
+    width: 50%;
+    text-align: center;
+}
+.table__lbl {
+    margin: 5vh 0;
+}
+
+.purchase__button {
+    width: 100%;
+    margin-top: 8vh;
+}
+.purchase__button--submit {
+    width: 100%;
+    font-weight: bolder;
+    font-size: large;
+    color: white;
+    background-color: red;
+    padding: 2vh 0;
+    border: none;
+}

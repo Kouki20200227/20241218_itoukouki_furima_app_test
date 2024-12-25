@@ -24,3 +24,5 @@ Route::get('/mypage', [AuthorController::class, 'mypage']);
 Route::get('/mypage/profile', [AuthorController::class, 'profile']);
 Route::get('/sell', [AuthorController::class, 'sell']);
 Route::get('/item', [AuthorController::class, 'item']);
+Route::get('/purchase', [AuthorController::class, 'purchase']);
+Route::get('/purchase/address', [AuthorController::class, 'address']);
