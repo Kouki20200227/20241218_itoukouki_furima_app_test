@@ -12,7 +12,7 @@
     <header>
         <div class="header__ttl">
             <div class="ttl--txt">
-                <p class="logo--ttl">COACHTECH</p>
+                <img src="{{asset('storage/logo.svg')}}" class="logo__ttl--img">
             </div>
             <div class="header__search">
                 @if (Auth::check())
