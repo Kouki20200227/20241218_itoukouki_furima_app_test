@@ -133,6 +133,10 @@ return [
 
     'views' => true,
 
+    'redirects' => [
+        'register' => config('app.url') .'/mypage/profile'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Features

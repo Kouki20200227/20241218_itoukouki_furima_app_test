@@ -50,7 +50,15 @@ li:last-of-type {
     background-color: white;
     border-radius: 5px;
 }
-.logout__link,
+.logout__form{
+    width: 100%;
+}
+.logout__button--submit{
+    font-size: small;
+    border: none;
+    color: white;
+    background-color: black;
+}
 .login__link,
 .mypage__link {
     width: 100%;
