@@ -16,6 +16,7 @@ use PharIo\Manifest\Author;
 */
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', [AuthorController::class, 'index']);
     Route::get('/sell', [AuthorController::class, 'sell']);
 });
 
