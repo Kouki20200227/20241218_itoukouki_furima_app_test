@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 use PharIo\Manifest\Author;
 
 /*
@@ -16,13 +18,28 @@ use PharIo\Manifest\Author;
 */
 
 Route::middleware('auth')->group(function () {
+    // トップページ表示処理
+    Route::get('/', [AuthorController::class, 'index']);
+    Route::get('/?page=mylist', [AuthorController::class, 'index_mylist']);
     Route::get('/sell', [AuthorController::class, 'sell']);
+    // プロフィール処理
+    Route::get('/mypage/profile', [ProfileController::class, 'profile_index']);
+    Route::post('/mypage/profile', [ProfileController::class, 'profile_store']);
+    // 商品詳細画面
+    Route::get('/item', [ItemController::class, 'item_index']);
+    Route::post('/item', [ItemController::class, 'item_comment']);
+    // 商品購入画面ルート処理
+    Route::get('/purchase', [AuthorController::class, 'purchase_index']);
+    Route::post('/purchase', [AuthorController::class, 'purchase_store']);
+    // 送付先住所変更画面ルート処理
+    Route::get('/purchase/address', [AuthorController::class, 'address_index']);
 });
 
+// トップページ画面ルート処理
 Route::get('/', [AuthorController::class, 'index']);
-Route::get('/mypage', [AuthorController::class, 'mypage']);
-Route::get('/mypage/profile', [AuthorController::class, 'profile']);
-Route::get('/sell', [AuthorController::class, 'sell']);
-Route::get('/item', [AuthorController::class, 'item']);
+Route::get('/?page=mylist', [AuthorController::class, 'index_mylist']);
+// 商品詳細画面ルート処理
+Route::get('/item', [ItemController::class, 'item_index']);
+Route::post('/item', [ItemController::class, 'item_comment']);
 Route::get('/purchase', [AuthorController::class, 'purchase']);
 Route::get('/purchase/address', [AuthorController::class, 'address']);

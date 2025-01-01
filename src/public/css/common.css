@@ -6,21 +6,70 @@ header {
 .header__ttl {
     display: flex;
     justify-content: space-between;
-    padding: 2vh 2vw;
+    padding: 0 2vw;
 }
 .ttl--txt {
     width: 25%;
+    padding: 2vh 0;
+    margin: auto 0;
+}
+.logo__ttl--link{
+    width: 100%;
+}
+.logo__ttl--img{
+    width: 100;
+    object-fit: cover;
 }
 .header__search {
-    width: 25%;
+    width: 40%;
+    margin: auto 0;
+}
+.header__form {
+    width: 100%;
+}
+.search__item {
+    width: 100%;
+    padding: 2vh 1vw;
+    border-radius: 5px;
 }
 .header__link {
-    width: 30%;
+    width: 20%;
+}
+ul {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.sell__link {
+li {
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    padding: 1vh 0;
+}
+li:last-of-type {
     background-color: white;
+    border-radius: 5px;
+}
+.logout__form{
+    width: 100%;
+}
+.logout__button--submit{
+    font-size: small;
+    border: none;
+    color: white;
+    background-color: black;
+}
+.login__link,
+.mypage__link {
+    width: 100%;
+    font-size: small;
+    text-decoration-line: none;
+    color: white;
+}
+.sell__link {
+    width: 100%;
+    font-size: small;
     color: black;
     border-radius: 5px;
+    text-decoration-line: none;
 }

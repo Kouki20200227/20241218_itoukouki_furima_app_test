@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Profile;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthorController extends Controller
 {
@@ -14,11 +18,6 @@ class AuthorController extends Controller
     // プロフィールページ表示処理
     public function mypage(){
         return view('mypage');
-    }
-
-    // プロフィール設定ページ表示処理
-    public function profile(){
-        return view('profile');
     }
 
     // 商品出品ページ表示処理

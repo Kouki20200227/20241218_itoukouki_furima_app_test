@@ -12,22 +12,32 @@
     <header>
         <div class="header__ttl">
             <div class="ttl--txt">
-                <img src="{{asset('storage/logo.svg')}}" class="logo__ttl--img">
+                <a href="/" class="logo__ttl--link"><img src="{{asset('img/logo.svg')}}" alt="" class="logo__ttl--img"></a>
             </div>
             <div class="header__search">
-                @if (Auth::check())
+                @unless (Route::is('login') | Route::is('register'))
                 <form action="/" class="header__form" method="get">
                     @csrf
                     <input type="text" class="search__item" name="keyword" value="{{old('keyword')}}" placeholder="なにをお探しですか？">
                 </form>
-                @endif
+                @endunless
             </div>
             <nav class="header__link">
-                @if (Auth::check())
-                    <a href="/logout" class="logout__link">ログアウト</a>
-                    <a href="/mypage" class="mypage__link">マイページ</a>
-                    <a href="/sell" class="sell__link">出品</a>
-                @endif
+                @unless (Route::is('login') | Route::is('register'))
+                <ul>
+                    @if (Auth::check())
+                    <li><form action="/logout" class="logout__form" method="post">
+                        @csrf
+                        <button class="logout__button--submit">ログアウト</button>
+                        </form>
+                    </li>
+                    @else
+                    <li><a href="/login" class="login__link">ログイン</a></li>
+                    @endif
+                    <li><a href="/mypage" class="mypage__link">マイページ</a></li>
+                    <li><a href="/sell" class="sell__link">出品</a></li>
+                </ul>
+                @endunless
             </nav>
         </div>
     </header>
