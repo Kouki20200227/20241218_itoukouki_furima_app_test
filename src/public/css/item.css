@@ -28,6 +28,9 @@
 .buy__form {
     width: 100%;
 }
+.input__hidden--item{
+    display: none;
+}
 .buy__form--ttl {
     font-size: x-large;
     font-weight: bolder;

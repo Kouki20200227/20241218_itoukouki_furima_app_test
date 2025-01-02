@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
+use App\Models\Purchase;
 use PharIo\Manifest\Author;
 
 /*
@@ -19,8 +21,8 @@ use PharIo\Manifest\Author;
 
 Route::middleware('auth')->group(function () {
     // トップページ表示処理
-    Route::get('/', [AuthorController::class, 'index']);
-    Route::get('/?page=mylist', [AuthorController::class, 'index_mylist']);
+    Route::get('/', [AuthorController::class, 'user_index']);
+    Route::get('/?page=mylist', [AuthorController::class, 'user_index_mylist']);
     Route::get('/sell', [AuthorController::class, 'sell']);
     // プロフィール処理
     Route::get('/mypage/profile', [ProfileController::class, 'profile_index']);
@@ -29,8 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/item', [ItemController::class, 'item_index']);
     Route::post('/item', [ItemController::class, 'item_comment']);
     // 商品購入画面ルート処理
-    Route::get('/purchase', [AuthorController::class, 'purchase_index']);
-    Route::post('/purchase', [AuthorController::class, 'purchase_store']);
+    Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
+    Route::post('/purchase', [PurchaseController::class, 'purchase_store']);
     // 送付先住所変更画面ルート処理
     Route::get('/purchase/address', [AuthorController::class, 'address_index']);
 });
@@ -41,5 +43,5 @@ Route::get('/?page=mylist', [AuthorController::class, 'index_mylist']);
 // 商品詳細画面ルート処理
 Route::get('/item', [ItemController::class, 'item_index']);
 Route::post('/item', [ItemController::class, 'item_comment']);
-Route::get('/purchase', [AuthorController::class, 'purchase']);
+Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
 Route::get('/purchase/address', [AuthorController::class, 'address']);

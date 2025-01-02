@@ -8,16 +8,17 @@
 <div class="item__content">
     <!-- 商品画像 -->
     <div class="img__group">
-        <img src="" alt="商品画像" class="img__group--item">
+        <img src="{{asset($item->item_iamge)}}" alt="商品画像" class="img__group--item">
     </div>
     <!-- 商品詳細一覧 -->
     <div class="detail__group">
         <!-- 購入手続きフォーム -->
-        <form action="#" class="buy__form" method="get">
+        <form action="/purchase/address" class="buy__form" method="get">
             @csrf
-            <h2 class="buy__form--ttl">商品名がここに入る</h2>
+            <input type="text" name="item_id" class="input__hidden--item" value="{{$item->id}}">
+            <h2 class="buy__form--ttl">$item->item_name</h2>
             <small class="buy__form--subttl">ブランド名</small>
-            <p class="buy__form--price"><span class="mini">¥</span>99,999<span class="mini">(税込)</span></p>
+            <p class="buy__form--price"><span class="mini">¥</span>{{number_format($item->item_price)}}<span class="mini">(税込)</span></p>
             <div class="buy__group">
                 <!-- お気に入り数 -->
                 <div class="buy__items">

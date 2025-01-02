@@ -5,38 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Http\Requests\ProfileRequest;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
 
 class AuthorController extends Controller
 {
-    // トップページ表示処理
-    public function index(){
+    // ログイン済みトップページ表示処理
+    public function user_index(){
+        $items = Item::all();
+        return view('index', ['items' => $items]);
+    }
+
+    // ログイン済みお気に入りページ表示処理
+    public function user_index_mylist(){
         return view('index');
     }
 
-    // プロフィールページ表示処理
-    public function mypage(){
-        return view('mypage');
-    }
-
-    // 商品出品ページ表示処理
-    public function sell(){
-        return view('sell');
-    }
-
-    // 商品詳細ページ表示
-    public function item(){
-        return view('item');
-    }
-
-    // 商品購入画面
-    public function purchase(){
-        return view('purchase');
-    }
-
-    // 送付先住所変更画面
-    public function address(){
-        return view('address');
+    // 未承認ユーザートップページ
+    public function index(){
+        $items = Item::all();
+        return view('index', ['items' => $items]);
     }
 }

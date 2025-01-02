@@ -19,49 +19,25 @@
         </form>
     </div>
     <!-- 出品リスト表示 -->
-    <div class="exhibit__list">
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
+    <div class="item__list">
+        @foreach ($items as $item)
+        @if (!Auth::check())
+        <div class="item__group">
+            <div class="item__pic">
+                <a href="/purchase/?item_id={{$item->id}}" class="item__group--link"><img src="{{$item->item_image}}" alt="商品画像" class="item__group--img"></a>
+                <!-- <img src="{{asset($item->item_image)}}" alt="" class="item__group--img"> -->
             </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
+            <p class="item__group--name">{{$item->item_name}}</p>
         </div>
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
+        @elseif (Auth::id() !== $item->user_id)
+        <div class="item__group">
+            <div class="item__pic">
+                <a href="/purchase/?item_id={{$item->id}}" class="item__group--list"><img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img"></a>
             </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
+            <p class="item__group--name">{{$item->item_name}}</p>
         </div>
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
-            </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
-        </div>
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
-            </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
-        </div>
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
-            </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
-        </div>
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
-            </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
-        </div>
-        <div class="exhibit__group">
-            <div class="exhibit__pic">
-                <img src="#" alt="商品画像" class="exhibit__group--img">
-            </div>
-            <p class="exhibit__group--name">商品名（仮）</p>
-        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 @endsection

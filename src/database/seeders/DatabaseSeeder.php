@@ -13,8 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ItemTableSeeder::class);
-        $this->call(CategoryTableSeeder::class);
-        $this->call(ConditionTableSeeder::class);
+        // 誤作動防止のためコメントアウト
+        // $this->call(ItemTableSeeder::class);
+        // $this->call(CategoryTableSeeder::class);
+        // $this->call(ConditionTableSeeder::class);
+
+        // テーブル内データ一括削除
+        // \App\Models\Item::truncate();
     }
 }

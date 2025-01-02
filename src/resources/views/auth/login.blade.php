@@ -22,7 +22,7 @@
         </div>
         <div class="input__group">
             <label for="password" class="input__group--lbl">パスワード</label>
-            <input type="text" class="input__group--txt" name="password" value="{{old('password')}}">
+            <input type="password" class="input__group--txt" name="password" value="{{old('password')}}">
             <div class="form__group--error">
                 @error('password')
                     {{$message}}
