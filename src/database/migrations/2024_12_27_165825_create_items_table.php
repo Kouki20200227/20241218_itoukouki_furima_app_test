@@ -18,9 +18,10 @@ class CreateItemsTable extends Migration
             $table->integer('user_id');
             $table->integer('category_item_id');
             $table->integer('condition_id');
-            $table->integer('item_image');
+            $table->string('item_image');
             $table->string('product_name');
             $table->string('item_detail');
+            $table->integer('item_price');
             $table->integer('favorite');
             $table->tinyInteger('buy_flg');
             $table->timestamp('created_at')->useCurrent()->nullable();
