@@ -18,4 +18,8 @@ class Comment extends Model
         'item_id' => 'required',
         'comment' => 'required',
     );
+
+    public function item(){
+        return $this->belongsTo(Item::class, 'id', 'item_id');
+    }
 }

@@ -10,12 +10,15 @@
     margin: 15vh auto 0 auto;
     width: 40vw;
 }
-.img__group--item {
-    display: block;
+.img__pic{
     width: 30vw;
     height: 30vw;
+}
+.img__group--item {
+    display: block;
+    width: 100%;
+    height: 100%;
     background-color: gainsboro;
-    text-align: center;
 }
 
 /* 商品詳細一覧 */
@@ -27,9 +30,6 @@
 /* 購入手続きフォーム */
 .buy__form {
     width: 100%;
-}
-.input__hidden--item{
-    display: none;
 }
 .buy__form--ttl {
     font-size: x-large;

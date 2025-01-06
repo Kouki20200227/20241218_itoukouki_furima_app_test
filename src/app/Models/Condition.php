@@ -16,4 +16,8 @@ class Condition extends Model
     public static $rules = array(
         'condition' => 'required',
     );
+
+    public function item(){
+        return $this->hasOne(Condition::class, 'id', 'condition_id');
+    }
 }

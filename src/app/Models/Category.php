@@ -16,4 +16,8 @@ class Category extends Model
     public static $rules = array(
         'content' => 'required',
     );
+
+    public function items(){
+        return $this->belongsToMany(Item::class)->withTimestamps();
+    }
 }

@@ -12,9 +12,9 @@
         <!-- 商品名・画像 -->
         <div class="detail__group">
             <div class="item__group">
-                <img src="#" alt="商品画像" class="detail__group--img">
+                <img src="{{$item->item_image}}" alt="商品画像" class="detail__group--img">
                 <div class="item__tag">
-                    <p class="detail__tag--ttl">商品名</p>
+                    <p class="detail__tag--ttl">{{$item->item_name}}</p>
                     <p class="detail__tag--price">¥ 47,000</p>
                 </div>
             </div>

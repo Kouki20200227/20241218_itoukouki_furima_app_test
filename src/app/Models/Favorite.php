@@ -19,4 +19,8 @@ class Favorite extends Model
         'user_id' => 'required',
         'item_id' => 'required',
     ];
+
+    public function item(){
+        return $this->belongsTo(Item::class, 'id', 'item_id');
+    }
 }
