@@ -27,7 +27,7 @@ class ProfileRequest extends FormRequest
             'profile_image' => 'required',
             'profile_user_name' => 'required',
             'profile_address' => 'required',
-            'profile_post_card' => 'required',
+            'profile_post_code' => 'required',
             'profile_building' => 'required',
         ];
     }

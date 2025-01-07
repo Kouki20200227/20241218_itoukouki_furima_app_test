@@ -27,9 +27,6 @@ Route::middleware('auth')->group(function () {
     // プロフィール処理
     Route::get('/mypage/profile', [ProfileController::class, 'profile_index']);
     Route::post('/mypage/profile', [ProfileController::class, 'profile_store']);
-    // 商品詳細画面
-    Route::get('/item', [ItemController::class, 'item_index']);
-    Route::post('/item', [ItemController::class, 'item_comment']);
     // 商品購入画面ルート処理
     Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
     Route::post('/purchase', [PurchaseController::class, 'purchase_store']);
@@ -43,5 +40,3 @@ Route::get('/?page=mylist', [AuthorController::class, 'index_mylist']);
 // 商品詳細画面ルート処理
 Route::get('/item', [ItemController::class, 'item_index']);
 Route::post('/item', [ItemController::class, 'item_comment']);
-Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
-Route::get('/purchase/address', [AuthorController::class, 'address']);

@@ -9,7 +9,7 @@
     <!-- 商品画像 -->
     <div class="img__group">
         <div class="img__pic">
-            <img src="{{$item->item_image}}" alt="商品画像" class="img__group--item">
+            <img src="{{asset($item->item_image)}}" alt="商品画像" class="img__group--item">
         </div>
     </div>
     <!-- 商品詳細一覧 -->
