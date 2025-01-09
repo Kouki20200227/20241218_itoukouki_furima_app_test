@@ -23,6 +23,7 @@
     height: 10vw;
     border-radius: 50%;
     background-color: gainsboro;
+    object-fit: cover;
 }
 .input__file{
     margin: auto 0;

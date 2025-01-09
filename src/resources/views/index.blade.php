@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<script src="{{asset('js/profile.js')}}"></script>
 <div class="index__content">
     <!-- おすすめ・マイリスト選択ボタン -->
     <div class="list__bar">
@@ -24,14 +25,14 @@
         @if (!Auth::check())
         <div class="item__group">
             <div class="item__pic">
-                <a href="/item/?item_id={{$item->id}}" class="item__group--link"><img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img"></a>
+                <a href="/item/{{$item->id}}" class="item__group--link"><img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img"></a>
             </div>
             <p class="item__group--name">{{$item->item_name}}</p>
         </div>
         @elseif (Auth::id() !== $item->user_id)
         <div class="item__group">
             <div class="item__pic">
-                <a href="/item/?item_id={{$item->id}}" class="item__group--list"><img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img"></a>
+                <a href="/item/{{$item->id}}" class="item__group--list"><img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img"></a>
             </div>
             <p class="item__group--name">{{$item->item_name}}</p>
         </div>

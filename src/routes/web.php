@@ -22,7 +22,6 @@ use PharIo\Manifest\Author;
 Route::middleware('auth')->group(function () {
     // トップページ表示処理
     Route::get('/', [AuthorController::class, 'user_index']);
-    Route::get('/?page=mylist', [AuthorController::class, 'user_index_mylist']);
     Route::get('/sell', [AuthorController::class, 'sell']);
     // プロフィール処理
     Route::get('/mypage/profile', [ProfileController::class, 'profile_index']);
@@ -36,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
 // トップページ画面ルート処理
 Route::get('/', [AuthorController::class, 'index']);
-Route::get('/?page=mylist', [AuthorController::class, 'index_mylist']);
 // 商品詳細画面ルート処理
-Route::get('/item', [ItemController::class, 'item_index']);
+Route::get('/item/{item_id}', [ItemController::class, 'item_index']);
 Route::post('/item', [ItemController::class, 'item_comment']);
+

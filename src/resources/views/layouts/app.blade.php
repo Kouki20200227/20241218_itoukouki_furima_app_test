@@ -26,9 +26,10 @@
                 @unless (Route::is('login') | Route::is('register'))
                 <ul>
                     @if (Auth::check())
-                    <li><form action="/logout" class="logout__form" method="post">
+                    <li>
+                        <form action="/logout" class="logout__form" method="post">
                         @csrf
-                        <button class="logout__button--submit">ログアウト</button>
+                            <button class="logout__button--submit">ログアウト</button>
                         </form>
                     </li>
                     @else

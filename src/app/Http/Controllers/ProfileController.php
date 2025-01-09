@@ -43,20 +43,17 @@ class ProfileController extends Controller
             'profile_post_card' => $request->profile_post_code,
             'profile_building' => $request->profile_building,
         ];
+
+
         // トークンまだ外していない
-        if(isEmptyString($request->profile_id)){
+        if(empty($request->profile_id)){
             Profile::create($form);
         }else{
-            Profile::find($request->profile_id)->update();
+            Profile::find($request->profile_id)->update($form);
         }
 
         return redirect('/mypage/profile');
     }
-
-
-
-
-
 
     // プロフィール登録済みチェック
     private function getSearchQuery($request, $query){

@@ -17,10 +17,20 @@
         <div class="input__group image">
             <div class="input__img">
                 <img src="" id="preview" class="input__img--pic">
+                <!-- <script>
+                    function previewImage(obj){
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function(){
+                            document.getElementById('preview').src =fileReader.result;
+                        });
+                        fileReader.readAsDataURL(obj.files[0]);
+                    }
+                </script> -->
+                <script src="{{asset('js/preview.js')}}"></script>
             </div>
             <div class="input__file">
                 <label for="user_image" class="input__file--lbl">
-                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" value="{{old('profile_image')}}" accept="image/png, image/jpeg">
+                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" value="{{old('profile_image')}}" accept="image/png, image/jpeg" onchange="previewImage(this);">
                     画像を選択する
                 </label>
             </div>
