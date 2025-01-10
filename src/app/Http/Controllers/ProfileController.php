@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     // プロフィール画面表示処理
+    public function mypage_index(){
+        return view('mypage');
+    }
+
+    // プロフィール編集画面表示処理
     public function profile_index()
     {
         $user_id = Auth::id();
@@ -23,42 +28,69 @@ class ProfileController extends Controller
         return view('profile', ['profile' => $profile]);
     }
 
-    // プロフィール画面登録・更新処理
+    // プロフィール編集画面登録処理
     public function profile_store(ProfileRequest $request)
     {
-        // 画像ファイル存在チェック
+        // イメージ取得
         $image = $request->file('profile_image')->getClientOriginalName();
-        if(Storage::exists('public/profile_img' . $image)){
-            $path = 'public/profile_img/' . $image;
+        // 画像存在チェック
+        if(Storage::exists($image)){
+            $path = 'storage/profile_img' . $image;
         }else{
-        $path = $request->file('profile_image')->store('public/profile_img');
+            $test = $request->file('profile_image')->storeAs('public/profile_image', $image);
         }
 
-        // 画像ファイル保存処理
-        $form = [
-            'user_id' => Auth::id(),
-            'profile_image' => $path,
-            'profile_user_name' => $request->profile_user_name,
-            'profile_address' => $request->profile_address,
-            'profile_post_card' => $request->profile_post_code,
-            'profile_building' => $request->profile_building,
-        ];
+        // データセット
+        $form = $this->setData($request, $path);
 
+        // 登録処理
+        Profile::create($form);
 
-        // トークンまだ外していない
-        if(empty($request->profile_id)){
-            Profile::create($form);
-        }else{
-            Profile::find($request->profile_id)->update($form);
-        }
-
-        return redirect('/mypage/profile');
+        return redirect('/');
     }
+
+    // プロフィール編集画面更新処理
+    public function profile_update(ProfileRequest $request){
+        // データ取得
+        $query = Profile::query();
+        $profile = $this->getSearchQuery(Auth::id(), $query)->first();
+
+        // イメージパス取得
+        if(isset($request->profile_image)){
+            $image = $request->file('profile_image')->getClientOriginalName();
+            $test = $request->file('profile_image')->storeAs('public/profile_img', $image);
+            $path = 'storage/profile_img' . $image;
+        }else{
+            $path = $profile->profile_image;
+        }
+
+        // データセット
+        $form = $this->setData($request, $path);
+        Profile::find($profile->id)->update($form);
+
+        return redirect('/');
+    }
+
+
 
     // プロフィール登録済みチェック
     private function getSearchQuery($request, $query){
         $query->where('user_id', '=', $request);
 
         return $query;
+    }
+
+    // データセット
+    private function setData($request, $path){
+        $form = [
+            'user_id' => Auth::id(),
+            'profile_image' => $path,
+            'profile_user_name' => $request->profile_user_name,
+            'profile_address' => $request->profile_address,
+            'profile_post_code' => $request->profile_post_code,
+            'profile_building' => $request->profile_building,
+        ];
+
+        return $form;
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Models\Profile;
 use App\Models\Purchase;
 use PharIo\Manifest\Author;
 
@@ -20,17 +21,21 @@ use PharIo\Manifest\Author;
 */
 
 Route::middleware('auth')->group(function () {
-    // トップページ表示処理
+    // トップページ処理
     Route::get('/', [AuthorController::class, 'user_index']);
     Route::get('/sell', [AuthorController::class, 'sell']);
+
     // プロフィール処理
+    Route::get('mypage', [ProfileController::class, 'mypage_index']);
     Route::get('/mypage/profile', [ProfileController::class, 'profile_index']);
     Route::post('/mypage/profile', [ProfileController::class, 'profile_store']);
+    Route::put('/mypage/profile', [ProfileController::class, 'profile_update']);
+
+
     // 商品購入画面ルート処理
     Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
     Route::post('/purchase', [PurchaseController::class, 'purchase_store']);
-    // 送付先住所変更画面ルート処理
-    Route::get('/purchase/address', [AuthorController::class, 'address_index']);
+    Route::get('/purchase/address', [PurchaseController::class, 'address_index']);
 });
 
 // トップページ画面ルート処理

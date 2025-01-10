@@ -12,32 +12,17 @@
     </div>
     <form action="/mypage/profile" class="profile__form"  method="post" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="profile_id" value="" hidden>
         <!-- プロフィール画像 -->
         <div class="input__group image">
             <div class="input__img">
                 <img src="" id="preview" class="input__img--pic">
-                <!-- <script>
-                    function previewImage(obj){
-                        var fileReader = new FileReader();
-                        fileReader.onload = (function(){
-                            document.getElementById('preview').src =fileReader.result;
-                        });
-                        fileReader.readAsDataURL(obj.files[0]);
-                    }
-                </script> -->
                 <script src="{{asset('js/preview.js')}}"></script>
             </div>
             <div class="input__file">
                 <label for="user_image" class="input__file--lbl">
-                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" value="{{old('profile_image')}}" accept="image/png, image/jpeg" onchange="previewImage(this);">
+                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" accept="image/png, image/jpeg" onchange="previewImage(this)">
                     画像を選択する
                 </label>
-            </div>
-            <div class="form__group--error">
-                @error('profile_image')
-                    {{$message}}
-                @enderror
             </div>
         </div>
         <!-- ユーザー名 -->
@@ -94,24 +79,20 @@
     <div class="profile__ttl">
         <h2 class="profile__ttl--txt">プロフィール設定</h2>
     </div>
-    <form action="/mypage/profile" class="profile__form" method="post">
+    <form action="/mypage/profile" class="profile__form" method="post" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
-        <input type="text" name="profile_id" value="" hidden>
         <!-- プロフィール画像 -->
         <div class="input__group image">
             <div class="input__img">
-                <img src="" id="preview" class="input__img--pic">
+                <img src="{{asset($profile->profile_image)}}" id="preview" class="input__img--pic">
+                <script src="{{asset('js/preview.js')}}"></script>
             </div>
             <div class="input__file">
                 <label for="user_image" class="input__file--lbl">
-                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" value="{{old('profile_image')}}">
+                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" accept="image/png, image/jpeg" onchange="previewImage(this)">
                     画像を選択する
                 </label>
-            </div>
-            <div class="form__group--error">
-                @error('profile_image')
-                    {{$message}}
-                @enderror
             </div>
         </div>
         <!-- ユーザー名 -->
@@ -127,9 +108,9 @@
         <!-- 郵便番号 -->
         <div class="input__group">
             <label for="post_code" class="input__group--lbl">郵便番号</label>
-            <input type="text" class="input__group--txt" name="profile_post_code" value="{{$profile->profile_code_name}}">
+            <input type="text" class="input__group--txt" name="profile_post_code" value="{{$profile->profile_post_code}}">
             <div class="form__group--error">
-                @error('profile_address')
+                @error('profile_post_code')
                     {{$message}}
                 @enderror
             </div>
@@ -139,7 +120,7 @@
             <label for="address" class="input__group--lbl">住所</label>
             <input type="text" class="input__group--txt" name="profile_address" value="{{$profile->profile_address}}">
             <div class="form__group--error">
-                @error('profile_post_card')
+                @error('profile_address')
                     {{$message}}
                 @enderror
             </div>

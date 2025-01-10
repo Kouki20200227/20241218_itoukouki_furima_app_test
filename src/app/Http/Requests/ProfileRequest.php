@@ -24,7 +24,6 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile_image' => 'required',
             'profile_user_name' => 'required',
             'profile_address' => 'required',
             'profile_post_code' => 'required',
@@ -35,7 +34,6 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'profile_image.required' => 'プロフィール画像を選択してください',
             'profile_user_name.required' => 'ユーザー名を入力してください',
             'profile_address.required' => '住所を入力してください',
             'profile_post_code.required' => '郵便番号を入力してください',
