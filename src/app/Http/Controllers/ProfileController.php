@@ -34,11 +34,10 @@ class ProfileController extends Controller
         // イメージ取得
         $image = $request->file('profile_image')->getClientOriginalName();
         // 画像存在チェック
-        if(Storage::exists($image)){
-            $path = 'storage/profile_img' . $image;
-        }else{
-            $test = $request->file('profile_image')->storeAs('public/profile_image', $image);
+        if(!Storage::exists($image)){
+            $request->file('profile_image')->storeAs('public/profile_img', $image);
         }
+        $path = 'storage/profile_img/' . $image;
 
         // データセット
         $form = $this->setData($request, $path);
@@ -59,7 +58,7 @@ class ProfileController extends Controller
         if(isset($request->profile_image)){
             $image = $request->file('profile_image')->getClientOriginalName();
             $test = $request->file('profile_image')->storeAs('public/profile_img', $image);
-            $path = 'storage/profile_img' . $image;
+            $path = 'storage/profile_img/' . $image;
         }else{
             $path = $profile->profile_image;
         }
