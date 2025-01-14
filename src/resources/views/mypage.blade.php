@@ -10,8 +10,8 @@
         @csrf
         <!-- プロフィール画像・ユーザー名 -->
         <div class="profile__group">
-            <img src="#" alt="" class="profile__group--img">
-            <strong class="profile__group--user">ユーザー名</strong>
+            <img src="{{asset($profile->profile_image)}}" class="profile__group--img">
+            <strong class="profile__group--user">{{$profile->profile_user_name}}</strong>
         </div>
         <!-- プロフィール編集ボタン -->
         <div class="profile__button">
@@ -19,36 +19,24 @@
         </div>
     </form>
     <!-- 出品・購入リスト表示 -->
-    <form action="/mypage" class="item__form" method="get">
-        @csrf
+    <div class="item__group">
         <div class="item__ttl">
-            <div class="item__button">
-                <button class="item__button--submit" type="submit" name="sell">出品した商品</button>
-                <button class="item__button--submit" type="submit" name="item">購入した商品</button>
+            <div class="item__tag">
+                <script src="{{asset('js/mypage.js')}}"></script>
+                <a class="item__tag--link" id="sell" href="/mypage?tab=sell" onchange="clickEventSell()">出品した商品</a>
+                <a class="item__tag--link" id="buy" href="/mypage?tab=buy" onchange="clickEventBuy()">購入した商品</a>
             </div>
         </div>
         <div class="item__output">
-            <div class="output__items">
-                <img src="#" alt="商品画像" class="output__items--img">
-                <label class="output__items--lbl">商品名</label>
-            </div>
-            <div class="output__items">
-                <img src="#" alt="商品画像" class="output__items--img">
-                <label class="output__items--lbl">商品名</label>
-            </div>
-            <div class="output__items">
-                <img src="#" alt="商品画像" class="output__items--img">
-                <label class="output__items--lbl">商品名</label>
-            </div>
-            <div class="output__items">
-                <img src="#" alt="商品画像" class="output__items--img">
-                <label class="output__items--lbl">商品名</label>
-            </div>
-            <div class="output__items">
-                <img src="#" alt="商品画像" class="output__items--img">
-                <label class="output__items--lbl">商品名</label>
-            </div>
+            @if (!$items->isEmpty())
+                @foreach ($items as $item)
+                    <div class="output__item">
+                        <img src="{{asset($item->item_image)}}" alt="出品画像" class="output__item--img">
+                        <label class="output__item--lbl">{{$item->item_name}}</label>
+                    </div>
+                @endforeach
+            @endif
         </div>
-    </form>
+    </div>
 </div>
 @endsection

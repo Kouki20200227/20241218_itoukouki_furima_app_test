@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Http\Requests\ProfileRequest;
+use App\Models\Item;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -13,8 +15,16 @@ use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     // プロフィール画面表示処理
-    public function mypage_index(){
-        return view('mypage');
+    public function mypage_index(Request $request){
+        $profile = Profile::where('user_id', Auth::id())->first();
+
+        if($request->tab === 'sell'){
+            $items = Item::where('user_id', Auth::id())->get();
+        }elseif($request->tab === 'buy'){
+            $items = Purchase::where('user_id', Auth::id())->get();
+        }
+
+        return view('mypage', ['profile' => $profile, 'items' => $items]);
     }
 
     // プロフィール編集画面表示処理

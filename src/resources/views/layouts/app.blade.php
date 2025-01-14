@@ -35,7 +35,7 @@
                     @else
                     <li><a href="/login" class="login__link">ログイン</a></li>
                     @endif
-                    <li><a href="/mypage" class="mypage__link">マイページ</a></li>
+                    <li><a href="/mypage?tab=sell" class="mypage__link">マイページ</a></li>
                     <li><a href="/sell" class="sell__link">出品</a></li>
                 </ul>
                 @endunless
