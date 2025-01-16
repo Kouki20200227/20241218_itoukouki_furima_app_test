@@ -31,8 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/mypage/profile', [ProfileController::class, 'profile_store']);
     Route::put('/mypage/profile', [ProfileController::class, 'profile_update']);
 
+    // 商品出品処理
+    Route::get('/sell', [ItemController::class, 'sell_index']);
+    Route::post('/sell', [ItemController::class, 'sell_store']);
 
-    // 商品購入画面ルート処理
+    // 商品購入処理
     Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
     Route::post('/purchase', [PurchaseController::class, 'purchase_store']);
     Route::get('/purchase/address', [PurchaseController::class, 'address_index']);

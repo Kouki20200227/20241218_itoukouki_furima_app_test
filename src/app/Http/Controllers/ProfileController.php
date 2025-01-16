@@ -67,7 +67,7 @@ class ProfileController extends Controller
         // イメージパス取得
         if(isset($request->profile_image)){
             $image = $request->file('profile_image')->getClientOriginalName();
-            $test = $request->file('profile_image')->storeAs('public/profile_img', $image);
+            $request->file('profile_image')->storeAs('public/profile_img', $image);
             $path = 'storage/profile_img/' . $image;
         }else{
             $path = $profile->profile_image;
