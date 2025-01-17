@@ -17,11 +17,11 @@ class CreatePurchasesTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('item_id');
-            $table->integer('buy_price');
-            $table->tinyInteger('payment_method');
-            $table->string('shipping_address');
-            $table->string('shipping__post_card');
-            $table->string('shipping_building');
+            $table->integer('purchase_price');
+            $table->tinyInteger('purchase_payment_method');
+            $table->string('purchase_address');
+            $table->string('purchase_post_code');
+            $table->string('purchase_building');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

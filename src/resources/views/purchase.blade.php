@@ -7,15 +7,15 @@
 @section('content')
 <div class="purchase__content">
     <!-- 購入情報フォーム -->
-    <form action="/purchase/address" class="detail__form" method="get">
+    <form action="/purchase/address/{{$item->id}}" class="detail__form" method="get">
         @csrf
         <!-- 商品名・画像 -->
         <div class="detail__group">
             <div class="item__group">
-                <img src="{{$item->item_image}}" alt="商品画像" class="detail__group--img">
+                <img src="{{asset($item->item_image)}}" class="detail__group--img">
                 <div class="item__tag">
                     <p class="detail__tag--ttl">{{$item->item_name}}</p>
-                    <p class="detail__tag--price">¥ 47,000</p>
+                    <p class="detail__tag--price">¥ {{$item->item_price}}</p>
                 </div>
             </div>
         </div>
@@ -39,8 +39,13 @@
                 </div>
             </div>
             <div class="address__tag">
-                <p class="address__tag--txt">〒 XXX-YYYY</p>
-                <p class="address__tag--txt">ここには住所と建物が入ります</p>
+                @if (session('post_code'))
+                    <p class="address__tag--txt">〒 {{session('post_code')}}</p>
+                    <p class="address__tag--txt">{{session('address') . session('building')}}</p>
+                @else
+                    <p class="address__tag--txt">〒 {{$profile->profile_post_code}}</p>
+                    <p class="address__tag--txt">{{$profile->profile_address . $profile->profile_building}}</p>
+                @endif
             </div>
         </div>
     </form>
@@ -50,7 +55,7 @@
         <table class="purchase__table">
             <tr>
                 <th><p class="table__header">商品代金</p></th>
-                <td><p class="table__lbl">¥ 47,000</p></td>
+                <td><p class="table__lbl">¥ {{$item->item_price}}</p></td>
             </tr>
             <tr>
                 <th><p class="table__header">支払い方法</p></th>

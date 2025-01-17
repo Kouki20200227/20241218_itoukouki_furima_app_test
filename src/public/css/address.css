@@ -35,3 +35,7 @@
     background-color: red;
     border: none;
 }
+
+.form__group--error{
+    color: red;
+}

@@ -36,9 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/sell', [ItemController::class, 'sell_store']);
 
     // 商品購入処理
-    Route::get('/purchase', [PurchaseController::class, 'purchase_index']);
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase_index']);
     Route::post('/purchase', [PurchaseController::class, 'purchase_store']);
-    Route::get('/purchase/address', [PurchaseController::class, 'address_index']);
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address_index']);
+    Route::post('/purchase/address', [PurchaseController::class, 'address_store']);
 });
 
 // トップページ画面ルート処理

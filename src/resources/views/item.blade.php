@@ -15,7 +15,7 @@
     <!-- 商品詳細一覧 -->
     <div class="detail__group">
         <!-- 購入手続きフォーム -->
-        <form action="/purchase/?item_id={{$item->id}}" class="buy__form" method="get">
+        <form action="/purchase/{{$item->id}}" class="buy__form" method="get">
             @csrf
             <h2 class="buy__form--ttl">{{$item->item_name}}</h2>
             <small class="buy__form--subttl">ブランド名</small>
