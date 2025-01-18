@@ -21,7 +21,7 @@ class ProfileController extends Controller
         if($request->tab === 'sell'){
             $items = Item::where('user_id', Auth::id())->get();
         }elseif($request->tab === 'buy'){
-            $items = Purchase::where('user_id', Auth::id())->get();
+            $purchases = Purchase::where('user_id', Auth::id())->get();
         }
 
         return view('mypage', ['profile' => $profile, 'items' => $items]);

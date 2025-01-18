@@ -11,15 +11,19 @@ class Purchase extends Model
 
     protected $guarded = array('id');
 
-    protected $fillable = ['item_id', 'user_id', 'buy_price', 'payment_method', 'shipping_address', 'shipping_post_card', 'shipping_building',];
+    protected $fillable = ['item_id', 'user_id', 'purchase_price', 'purchase_payment_method', 'purchase_address', 'purchase_post_code', 'purchase_building',];
 
     public static $rules = array(
         'item_id' => 'required',
         'user_id' => 'required',
-        'buy_price' => 'required',
-        'payment_method' => 'required',
-        'shipping_address' => 'required',
-        'shipping_post_card' => 'required',
-        'shipping_building' => 'required',
+        'purchase_price' => 'required',
+        'purchase_payment_method' => 'required',
+        'purchase_address' => 'required',
+        'purchase_post_code' => 'required',
+        'purchase_building' => 'required',
     );
+
+    public function item(){
+        return $this->belongsTo(Item::class, 'id', 'item_id');
+    }
 }

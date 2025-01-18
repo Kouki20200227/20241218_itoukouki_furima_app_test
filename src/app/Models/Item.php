@@ -39,4 +39,7 @@ class Item extends Model
         return $this->belongsTo(Condition::class);
     }
 
+    public function purchase(){
+        return $this->hasOne(Purchase::class);
+    }
 }

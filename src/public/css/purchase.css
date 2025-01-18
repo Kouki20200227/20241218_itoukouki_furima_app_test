@@ -1,13 +1,25 @@
 .purchase__content {
-    display: flex;
-    justify-content: space-around;
     margin-top: 5vh;
 }
 
 /* 購入情報フォーム */
 .detail__form {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+input{
+    border: none;
+}
+/* 左側 */
+.left__group{
     width: 60vw;
 }
+/* 右側 */
+.right__group{
+    width: 30vw;
+}
+
 .detail__group {
     width: 100%;
     padding-bottom: 5vh;
@@ -68,14 +80,13 @@
     display: flex;
     justify-content: space-between;
 }
-.address__button {
+.address__change {
     margin: auto 0;
     margin-right: 5%;
 }
-.address__button--submit {
+.address__change--link {
     font-size: medium;
-    border: none;
-    background-color: white;
+    text-decoration-line: none;
     color: rgb(45, 73, 255);
 }
 .address__tag {
@@ -84,9 +95,6 @@
 }
 
 /* 購入フォーム */
-.purchase__form {
-    width: 30vw;
-}
 .purchase__table {
     width: 100%;
     border: 2px solid gainsboro;
@@ -110,7 +118,6 @@ td {
 .table__lbl {
     margin: 5vh 0;
 }
-
 .purchase__button {
     width: 100%;
     margin-top: 8vh;
@@ -123,4 +130,10 @@ td {
     background-color: red;
     padding: 2vh 0;
     border: none;
+}
+
+.form__group--error{
+    color: red;
+    width: 50%;
+    margin-left: 20%;
 }

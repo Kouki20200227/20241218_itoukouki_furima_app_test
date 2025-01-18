@@ -31,7 +31,7 @@
             @if (!$items->isEmpty())
                 @foreach ($items as $item)
                     <div class="output__item">
-                        <img src="{{asset($item->item_image)}}" alt="出品画像" class="output__item--img">
+                        <img src="{{asset($item->item_image)}}" class="output__item--img">
                         <label class="output__item--lbl">{{$item->item_name}}</label>
                     </div>
                 @endforeach
