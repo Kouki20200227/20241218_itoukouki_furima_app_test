@@ -151,7 +151,12 @@ select {
 }
 .price::before{
     position: absolute;
-    
+    content: '¥';
+    top: 50%;
+    left: 2%;
+}
+#item_price{
+    padding-left: 2vw;
 }
 
 /* 出品ボタン */

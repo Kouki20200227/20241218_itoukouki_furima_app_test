@@ -10,7 +10,7 @@
     <div class="sell__ttl">
         <h2 class="sell__ttl--lbl">商品の出品</h2>
     </div>
-    <form action="/sell" class="sell__form" method="post">
+    <form action="/sell" class="sell__form" method="post" enctype="multipart/form-data">
         @csrf
         <!-- 商品画像添付 -->
         <div class="sell__img">
@@ -18,7 +18,7 @@
             <div class="pic__area">
                 <img src="" class="pic__area--img" id="preview">
                 <script src="{{asset("js/preview.js")}}"></script>
-                <input type="file" class="pic__area--input" name="item_image" id="item_img" accept="image/png, image/jpeg" onchange="previewImage(this)">
+                <input type="file" class="pic__area--input" name="item_image" id="item_img" accept="image/png,image/jpeg" onchange="previewImage(this)">
                 <label for="item_img" class="pic__area--lbl">画像を選択してください</label>
             </div>
         </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="input__group">
                     <p class="input__group--lbl">商品の説明</p>
-                    <textarea name="item_detail" id="item_detail" class="input__group--text"></textarea>
+                    <textarea name="item_detail" id="item_detail" class="input__group--text">{{old('item_detail')}}</textarea>
                 </div>
                 <div class="form__group--error">
                     @error('item_detail')

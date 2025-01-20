@@ -23,7 +23,6 @@ use PharIo\Manifest\Author;
 Route::middleware('auth')->group(function () {
     // トップページ処理
     Route::get('/', [AuthorController::class, 'user_index']);
-    Route::get('/sell', [AuthorController::class, 'sell']);
 
     // プロフィール処理
     Route::get('mypage', [ProfileController::class, 'mypage_index']);

@@ -22,7 +22,7 @@ class ItemController extends Controller
     // 商品出品画面登録処理
     public function sell_store(SellRequest $request){
         // 選択画像セット
-        $image = $request->file('item_img')->getClientOriginalName();
+        $image = $request->file('item_image')->getClientOriginalName();
         $path = 'storage/item_img/' . $image;
         if(!Storage::exists($image)){
             $request->file('item_img')->storeAs('public/item_img', $image);
@@ -32,6 +32,8 @@ class ItemController extends Controller
         $result = Item::create($form);
         // カテゴリー登録処理
         Item::find($result->id)->categories()->syncWithoutDetaching($request->categories);
+
+        return redirect('/');
     }
 
     // 商品詳細画面表示処理
