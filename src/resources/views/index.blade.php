@@ -38,7 +38,7 @@
         <div class="item__group">
             <div class="item__pic">
                 @if ($item->item_buy_flg === 1)
-                    <img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img">
+                    <img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img sold">
                     <p class="item__group--sold">SoldOut</p>
                 @else
                     <a href="/item/{{$item->id}}" class="item__group--link"><img src="{{asset($item->item_image)}}" alt="商品画像" class="item__group--img"></a>

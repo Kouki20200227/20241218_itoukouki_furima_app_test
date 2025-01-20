@@ -29,12 +29,21 @@
         </div>
         <div class="item__output">
             @if (!$items->isEmpty())
-                @foreach ($items as $item)
-                    <div class="output__item">
-                        <img src="{{asset($item->item_image)}}" class="output__item--img">
-                        <label class="output__item--lbl">{{$item->item_name}}</label>
-                    </div>
-                @endforeach
+                @if ($tab === 'sell')
+                    @foreach ($items as $item)
+                        <div class="output__item">
+                            <img src="{{asset($item->item_image)}}" class="output__item--img">
+                            <label class="output__item--lbl">{{$item->item_name}}</label>
+                        </div>
+                    @endforeach
+                @elseif($tab === 'buy')
+                    @foreach ($items as $item)
+                        <div class="output__item">
+                            <img src="{{asset($item->item->item_image)}}" class="output__item--img">
+                            <label class="output__item--lbl">{{$item->item->item_name}}</label>
+                        </div>
+                    @endforeach
+                @endif
             @endif
         </div>
     </div>

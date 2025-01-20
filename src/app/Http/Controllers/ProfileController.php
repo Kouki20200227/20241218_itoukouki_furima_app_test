@@ -17,14 +17,15 @@ class ProfileController extends Controller
     // プロフィール画面表示処理
     public function mypage_index(Request $request){
         $profile = Profile::where('user_id', Auth::id())->first();
+        $tab = $request->tab;
 
         if($request->tab === 'sell'){
             $items = Item::where('user_id', Auth::id())->get();
+            return view('mypage', ['profile' => $profile, 'items' => $items, 'tab' => $tab]);
         }elseif($request->tab === 'buy'){
-            $purchases = Purchase::where('user_id', Auth::id())->get();
+            $purchases = Purchase::where('user_id', Auth::id())->with('item')->get();
+            return view('mypage', ['profile' => $profile, 'items' => $purchases, 'tab' => $tab]);
         }
-
-        return view('mypage', ['profile' => $profile, 'items' => $items]);
     }
 
     // プロフィール編集画面表示処理

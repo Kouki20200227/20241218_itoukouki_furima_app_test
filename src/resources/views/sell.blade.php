@@ -18,9 +18,14 @@
             <div class="pic__area">
                 <img src="" class="pic__area--img" id="preview">
                 <script src="{{asset("js/preview.js")}}"></script>
-                <input type="file" class="pic__area--input" name="item_img" id="item_img" accept="image/png, image/jpeg" onchange="previewImage(this)">
+                <input type="file" class="pic__area--input" name="item_image" id="item_img" accept="image/png, image/jpeg" onchange="previewImage(this)">
                 <label for="item_img" class="pic__area--lbl">画像を選択してください</label>
             </div>
+        </div>
+        <div class="form__group--error">
+            @error('item_image')
+                {{$message}}
+            @enderror
         </div>
         <div class="sell__detail">
             <!-- 小タイトル -->
@@ -34,10 +39,15 @@
                 </div>
                 <div class="category__items">
                     @foreach ($categories as $category)
-                        <input type="checkbox" class="category__item" id="{{$category->id}}">
+                        <input type="checkbox" class="category__item" id="{{$category->id}}" name="categories[]" value="{{$category->id}}">
                         <label for="{{$category->id}}" class="category__item">{{$category->content}}</label>
                     @endforeach
                 </div>
+            </div>
+            <div class="form__group--error">
+                @error('categories')
+                    {{$message}}
+                @enderror
             </div>
             <!-- 商品状態 -->
             <div class="condition__group">
@@ -53,6 +63,11 @@
                     </select>
                 </div>
             </div>
+            <div class="form__group--error">
+                @error('condition')
+                    {{$message}}
+                @enderror
+            </div>
             <!-- 商品名と説明 -->
             <div class="explanation__group">
                 <div class="explanation__ttl">
@@ -60,15 +75,30 @@
                 </div>
                 <div class="input__group">
                     <p class="input__group--lbl">商品名</p>
-                    <input type="text" class="input__group--item" id="item_name" name="item_name" value="">
+                    <input type="text" class="input__group--item" id="item_name" name="item_name" value="{{old('item_name')}}">
+                </div>
+                <div class="form__group--error">
+                    @error('item_name')
+                        {{$message}}
+                    @enderror
                 </div>
                 <div class="input__group">
                     <p class="input__group--lbl">商品の説明</p>
                     <textarea name="item_detail" id="item_detail" class="input__group--text"></textarea>
                 </div>
-                <div class="input__group">
+                <div class="form__group--error">
+                    @error('item_detail')
+                        {{$message}}
+                    @enderror
+                </div>
+                <div class="input__group price">
                     <p class="input__group--lbl">販売価格</p>
-                    <input type="int" class="input__group--item" id="item_price" name="item_price" value="¥">
+                    <input type="int" class="input__group--item" id="item_price" name="item_price" value="{{old('item_price')}}">
+                </div>
+                <div class="form__group--error">
+                    @error('item_price')
+                        {{$message}}
+                    @enderror
                 </div>
             </div>
         </div>

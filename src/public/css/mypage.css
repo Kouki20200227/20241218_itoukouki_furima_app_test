@@ -56,12 +56,12 @@
 }
 .item__output {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
     margin: 5vh 0;
 }
 .output__item {
-    width: 20vw;
     margin: 0 auto;
+    width: 20vw;
     margin-bottom: 5vh;
 }
 .output__item--img {

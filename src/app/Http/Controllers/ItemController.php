@@ -29,9 +29,9 @@ class ItemController extends Controller
         }
         // 商品登録処理
         $form = $this->itemSet($request, $path);
-        Item::create($form);
+        $result = Item::create($form);
         // カテゴリー登録処理
-
+        Item::find($result->id)->categories()->syncWithoutDetaching($request->categories);
     }
 
     // 商品詳細画面表示処理
