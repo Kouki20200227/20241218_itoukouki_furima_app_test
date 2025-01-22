@@ -18,7 +18,7 @@
             <div class="pic__area">
                 <img src="" class="pic__area--img" id="preview">
                 <script src="{{asset("js/preview.js")}}"></script>
-                <input type="file" class="pic__area--input" name="item_image" id="item_img" accept="image/png,image/jpeg" onchange="previewImage(this)">
+                <input type="file" class="pic__area--input" name="item_image" id="item_img" accept="image/jpeg" onchange="previewImage(this)">
                 <label for="item_img" class="pic__area--lbl">画像を選択してください</label>
             </div>
         </div>

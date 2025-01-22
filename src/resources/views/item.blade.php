@@ -69,7 +69,7 @@
                 @if (!$item->comments->isEmpty())
                     @foreach ($item->comments as $comment)
                         <div class="comment-user__tag">
-                            <img src="{{$comment->profile->profile_image}}" class="comment-user__tag--img">
+                            <img src="{{asset($comment->profile->profile_image)}}" class="comment-user__tag--img">
                             <p class="comment-user__tag--name">{{$comment->profile->profile_user_name}}</p>
                         </div>
                         <div class="user-comment--tag">

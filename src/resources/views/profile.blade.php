@@ -20,7 +20,7 @@
             </div>
             <div class="input__file">
                 <label for="user_image" class="input__file--lbl">
-                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" accept="image/*" onchange="previewImage(this)">
+                    <input type="file" class="input__file--dir" name="profile_image" id="user_image" accept="image/jpeg" onchange="previewImage(this)">
                     画像を選択する
                 </label>
             </div>

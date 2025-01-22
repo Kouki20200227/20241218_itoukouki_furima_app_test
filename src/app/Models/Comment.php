@@ -24,6 +24,6 @@ class Comment extends Model
     }
 
     public function profile(){
-        return $this->belongsTo(Profile::class, 'id', 'profile_id');
+        return $this->belongsTo(Profile::class);
     }
 }

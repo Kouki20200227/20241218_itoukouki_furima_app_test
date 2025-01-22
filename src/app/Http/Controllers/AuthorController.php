@@ -15,6 +15,7 @@ use App\Models\Favorite;
 use App\Models\Purchase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Framework\MockObject\ClassIsFinalException;
 
 use function PHPUnit\Framework\isNull;
 
@@ -22,15 +23,31 @@ class AuthorController extends Controller
 {
     // ログイン済みトップページ表示処理
     public function user_index(Request $request){
-        // if(){
-        //     $items = Item::with('favorites')->where('user_id', Auth::id())->get();
-        //     return view('index', compact('items'));
-        // }else{
-        //     $items = Item::all();
-        //     return view('index', ['items' => $items]);
-        // }
-        $items = Item::all();
+        $query = $request->query('page', null);
+        if(is_null($query)){
+            if($request->has('keyword')){
+                $items = $this->search_Index($request->keyword);
+            }else{
+                $items = Item::all();
+            }
+        }elseif($query === 'mylist'){
+            if($request->has('keyword')){
+                $items = $this->search_Index($request->keyword)->whereHas('favorites', function ($query) {
+                    $query->where('user_id', Auth::id());
+                })->get();
+            }else{
+                $items = Item::whereHas('favorites',    function ($query) {
+                    $query->where('user_id', Auth::id());
+                })->get();
+            }
+        }
         return view('index', compact('items'));
+    }
+
+    private function search_Index($keyword){
+        $result = Item::where('item_name', 'LIKE', "%{$keyword}%")->get();
+
+        return $result;
     }
 
     // 商品出品画面表示処理
@@ -85,6 +102,7 @@ class AuthorController extends Controller
             return redirect(route('item.index', ['item_id' => $item_id]));
         }elseif(isset($_POST['comment_btn'])){
             $this->commentStore($item_id, $request);
+            return redirect(route('item.index', ['item_id' => $item_id]));
         }
     }
     // お気に入り追加処理
@@ -107,8 +125,10 @@ class AuthorController extends Controller
     }
     // コメント登録処理
     private function commentStore($item_id, $request){
+        $profile = Profile::where('user_id', Auth::id())->first(['id']);
+        dd($profile->id);
         Comment::create([
-            'user_id' => Auth::id(),
+            'profile_id' => $profile->id,
             'item_id' => $item_id,
             'comment' => $request->comment,
         ]);
@@ -158,7 +178,6 @@ class AuthorController extends Controller
 
         return redirect('/');
     }
-
     // プロフィール編集画面更新処理
     public function profile_update(ProfileRequest $request){
         // データ取得
@@ -180,6 +199,8 @@ class AuthorController extends Controller
 
         return redirect('/');
     }
+
+
     // 商品購入画面処理
     public function purchase_index($item_id, Request $request){
         $item = Item::find($item_id);
