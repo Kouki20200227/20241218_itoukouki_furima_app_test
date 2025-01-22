@@ -22,28 +22,32 @@ use PharIo\Manifest\Author;
 
 Route::middleware('auth')->group(function () {
     // トップページ処理
-    Route::get('/', [AuthorController::class, 'user_index']);
+    // Route::get('/', [AuthorController::class, 'user_index']);
 
     // プロフィール処理
-    Route::get('mypage', [ProfileController::class, 'mypage_index']);
-    Route::get('/mypage/profile', [ProfileController::class, 'profile_index']);
-    Route::post('/mypage/profile', [ProfileController::class, 'profile_store']);
-    Route::put('/mypage/profile', [ProfileController::class, 'profile_update']);
+    Route::get('mypage', [AuthorController::class, 'mypage_index']);
+    Route::get('/mypage/profile', [AuthorController::class, 'profile_index']);
+    Route::post('/mypage/profile', [AuthorController::class, 'profile_store']);
+    Route::put('/mypage/profile', [AuthorController::class, 'profile_update']);
 
     // 商品出品処理
-    Route::get('/sell', [ItemController::class, 'sell_index']);
-    Route::post('/sell', [ItemController::class, 'sell_store']);
+    Route::get('/sell', [AuthorController::class, 'sell_index']);
+    Route::post('/sell', [AuthorController::class, 'sell_store']);
 
     // 商品購入処理
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase_index']);
-    Route::post('/purchase', [PurchaseController::class, 'purchase_store']);
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'address_index']);
-    Route::post('/purchase/address', [PurchaseController::class, 'address_store']);
+    Route::get('/purchase/{item_id}', [AuthorController::class, 'purchase_index']);
+    Route::post('/purchase', [AuthorController::class, 'purchase_store']);
+    Route::get('/purchase/address/{item_id}', [AuthorController::class, 'address_index']);
+    Route::post('/purchase/address', [AuthorController::class, 'address_store']);
+
+    // 商品詳細処理
+    Route::post('/item/{item_id}', [AuthorController::class, 'item_store']);
+
 });
 
-// トップページ画面ルート処理
-Route::get('/', [AuthorController::class, 'index']);
+// トップページ処理
+Route::get('/', [AuthorController::class, 'user_index']);
+// Route::get('/', [AuthorController::class, 'search_index']);
 // 商品詳細画面ルート処理
-Route::get('/item/{item_id}', [ItemController::class, 'item_index']);
-Route::post('/item', [ItemController::class, 'item_comment']);
+Route::get('/item/{item_id}', [AuthorController::class, 'item_index'])->name('item.index');
 

@@ -28,44 +28,49 @@
 }
 
 /* 購入手続きフォーム */
-.buy__form {
+.item__group {
     width: 100%;
 }
-.buy__form--ttl {
+.item__group--ttl {
     font-size: x-large;
     font-weight: bolder;
     margin: 0;
 }
-.buy__form--price {
+.item__group--price {
     font-size: x-large;
 }
 .mini {
     font-size: small;
 }
-.buy__group {
+.item__tag {
     display: flex;
     margin-left: 5%;
 }
-.buy__items {
+.item__items {
     width: 10%;
     text-align: center;
 }
-.buy__items--txt {
+.item__items--txt {
     font-size: x-large;
     margin: 0;
+    border: none;
+    background-color: white;
 }
-.buy__items--count {
+.item__items--count {
     font-size: smaller;
 }
-.buy__button{
+.buy__group{
     margin-top: 5vh;
+    width: 100%;
 }
-.buy__button--submit {
+.buy__group--link {
+    display: inline-block;
+    text-align: center;
     width: 100%;
     background-color: red;
     color: white;
     padding: 1vh;
-    border: none;
+    text-decoration: none;
 }
 
 /* 商品説明コンテンツ */

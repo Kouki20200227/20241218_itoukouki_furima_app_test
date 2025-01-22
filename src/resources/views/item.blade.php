@@ -15,27 +15,27 @@
     <!-- 商品詳細一覧 -->
     <div class="detail__group">
         <!-- 購入手続きフォーム -->
-        <form action="/purchase/{{$item->id}}" class="buy__form" method="get">
-            @csrf
-            <h2 class="buy__form--ttl">{{$item->item_name}}</h2>
-            <small class="buy__form--subttl">ブランド名</small>
-            <p class="buy__form--price"><span class="mini">¥</span>{{number_format($item->item_price)}}<span class="mini">(税込)</span></p>
-            <div class="buy__group">
+        <div class="item__group">
+            <h2 class="item__group--ttl">{{$item->item_name}}</h2>
+            <small class="item__group--subttl">ブランド名</small>
+            <p class="item__group--price"><span class="mini">¥</span>{{number_format($item->item_price)}}<span class="mini">(税込)</span></p>
+            <div class="item__tag">
                 <!-- お気に入り数 -->
-                <div class="buy__items">
-                    <p class="buy__items--txt">☆</p>
-                    <small class="buy__items--count">{{$item->favorites_count}}</small>
-                </div>
+                <form action="/item/{{$item->id}}" class="item__items" type="submit" method="post">
+                    @csrf
+                        <button class="item__items--txt" type="submit" name="favorite_btn">☆</button><br/>
+                        <small class="item__items--count">{{$item->favorites_count}}</small>
+                </form>
                 <!-- コメント数 -->
-                <div class="buy__items">
-                    <p class="buy__items--txt">⚪︎</p>
-                    <small class="buy__items--count">{{$item->comments_count}}</small>
+                <div class="item__items">
+                    <p class="item__items--txt">⚪︎</p>
+                    <small class="item__items--count">{{$item->comments_count}}</small>
                 </div>
             </div>
-            <div class="buy__button">
-                <button class="buy__button--submit" type="submit">購入手続きへ</button>
+            <div class="buy__group">
+                <a href="/purchase/{{$item->id}}" class="buy__group--link">購入手続きへ</a>
             </div>
-        </form>
+        </div>
         <!-- 商品説明コンテンツ -->
         <div class="explanation__content">
             <!-- 商品説明グループ -->
@@ -65,23 +65,27 @@
         </div>
             <!-- コメントグループ -->
             <div class="comment__group">
-                <p class="comment__group--ttl">コメント(1)</p>
-                <div class="comment-user__tag">
-                    <img src="#" alt="?" class="comment-user__tag--img">
-                    <p class="comment-user__tag--name">admin</p>
-                </div>
-                <div class="user-comment--tag">
-                    <label class="user-comment--tag">こちらにコメントが入ります。</label>
-                </div>
+                <p class="comment__group--ttl">コメント({{$item->comments_count}})</p>
+                @if (!$item->comments->isEmpty())
+                    @foreach ($item->comments as $comment)
+                        <div class="comment-user__tag">
+                            <img src="{{$comment->profile->profile_image}}" class="comment-user__tag--img">
+                            <p class="comment-user__tag--name">{{$comment->profile->profile_user_name}}</p>
+                        </div>
+                        <div class="user-comment--tag">
+                            <label class="user-comment--tag">{{$comment->comment}}</label>
+                        </div>
+                    @endforeach
+                @endif
                 <div class="comment__area">
                     <p class="comment__area--ttl">商品へのコメント</p>
-                    <form action="/item" class="comment__form" method="post">
+                    <form action="/item/{{$item->id}}" class="comment__form" method="post">
                         @csrf
                         <div class="input__group">
-                            <textarea name="comment" class="input__group--txt"></textarea>
+                            <textarea name="comment" class="input__group--txt">{{old('comment')}}</textarea>
                         </div>
                         <div class="button__group">
-                            <button class="button__group--submit" type="submit">コメントを送信する</button>
+                            <button class="button__group--submit" name="comment_btn" type="submit">コメントを送信する</button>
                         </div>
                     </form>
                 </div>

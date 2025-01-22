@@ -11,15 +11,19 @@ class Comment extends Model
 
     protected $guarded = array('id');
 
-    protected $fillable = ['user_id', 'item_id', 'comment',];
+    protected $fillable = ['profile_id', 'item_id', 'comment',];
 
     public static $rules = array(
-        'user_id' => 'required',
+        'profile_id' => 'required',
         'item_id' => 'required',
         'comment' => 'required',
     );
 
     public function item(){
         return $this->belongsTo(Item::class, 'id', 'item_id');
+    }
+
+    public function profile(){
+        return $this->belongsTo(Profile::class, 'id', 'profile_id');
     }
 }

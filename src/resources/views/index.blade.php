@@ -9,15 +9,16 @@
 <div class="index__content">
     <!-- おすすめ・マイリスト選択ボタン -->
     <div class="list__bar">
-        <form action="/" class="index__form" method="get">
-            @csrf
-            <div class="button__group">
-                <button class="button__group--submit" type="submit" name="all">おすすめ</button>
+        <div class="index__group">
+            <div class="index__tag">
+                <a href="/" class="index__tag--link">おすすめ</a>
             </div>
-            <div class="button__group">
-                <button class="button__group--submit" type="submit" name="mylist">マイリスト</button>
-            </div>
-        </form>
+            @if (Auth::check())
+                <div class="index__tag">
+                    <a href="/?page=mylist" class="index__tag--link">マイリスト</a>
+                </div>
+            @endif
+        </div>
     </div>
     <!-- 出品リスト表示 -->
     <div class="item__list">
@@ -50,4 +51,5 @@
         @endforeach
     </div>
 </div>
+<script src="{{asset('js/index.js')}}"></script>
 @endsection

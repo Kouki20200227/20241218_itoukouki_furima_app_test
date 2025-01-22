@@ -21,4 +21,8 @@ class Profile extends Model
         'profile_post_code' => 'required',
         'profile_building' => 'required',
     );
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }
