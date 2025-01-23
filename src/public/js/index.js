@@ -1,15 +1,17 @@
+const selectedColor = 'palevioletred';
+const noSelectedColor = 'grey';
+// URLのクエリパラメータ取得
+const urlParams = new URLSearchParams(window.location.search);
+const page = urlParams.get('page');
+
 document.addEventListener('DOMContentLoaded', function () {
     const left = document.getElementById('left');
     const right = document.getElementById('right');
-    left.style.color = 'palevioletred';
-})
-
-function leftClick() {
-    left.classList.toggle("palevioletred");
-    right.classList.toggle("grey");
-}
-function rightClick() {
-    right.classList.toggle("palevioletred");
-    left.classList.toggle("grey");
-}
-
+    if (page === 'mylist') {
+        left.style.color = noSelectedColor;
+        right.style.color = selectedColor;
+    } else if(page === null){
+        left.style.color = selectedColor;
+        right.style.color = noSelectedColor;
+    }
+});

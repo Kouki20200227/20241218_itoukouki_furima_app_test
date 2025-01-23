@@ -11,11 +11,11 @@
     <div class="list__bar">
         <div class="index__group">
             <div class="index__tag">
-                <a href="/" class="index__tag--link">おすすめ</a>
+                <a href="/" class="index__tag--link" id="left">おすすめ</a>
             </div>
             @if (Auth::check())
                 <div class="index__tag">
-                    <a href="/?page=mylist" class="index__tag--link">マイリスト</a>
+                    <a href="/?page=mylist" class="index__tag--link" id="right">マイリスト</a>
                 </div>
             @endif
         </div>
