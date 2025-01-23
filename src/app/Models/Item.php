@@ -12,7 +12,7 @@ class Item extends Model
 
     protected $guarded = array('id');
 
-    protected $fillable = ['user_id', 'condition_id', 'item_image', 'item_name', 'item_detail', 'item_buy_flg'];
+    protected $fillable = ['user_id', 'condition_id', 'item_image', 'item_name', 'item_detail', 'item_price', 'item_buy_flg'];
 
     public static $rules = array(
         'user_id' => 'required',
@@ -20,6 +20,7 @@ class Item extends Model
         'item_image' => 'required',
         'item_name' => 'required',
         'item_detail' => 'required',
+        'item_price' => 'required',
         'item_buy_flg' => 'required',
     );
 

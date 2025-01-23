@@ -24,7 +24,7 @@ class SellRequest extends FormRequest
     public function rules()
     {
         return [
-            'item_image' => 'required',
+            // 'item_image' => 'required|file|mimes:jpeg|max:5120',
             'categories' => ['required'],
             'condition' => 'required',
             'item_name' => 'required',
@@ -35,7 +35,7 @@ class SellRequest extends FormRequest
 
     public function messages(){
         return [
-            'item_image.required' => '商品画像を選択してください',
+            // 'item_image.required' => '商品画像を選択してください',
             'categories.required' => '１つ以上のカテゴリーを選択してください',
             'condition.required' => '状態を選択してください',
             'item_name.required' => '商品名を入力してください',

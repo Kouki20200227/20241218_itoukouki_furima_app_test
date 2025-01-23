@@ -18,8 +18,8 @@
             <div class="pic__area">
                 <img src="" class="pic__area--img" id="preview">
                 <script src="{{asset("js/preview.js")}}"></script>
-                <input type="file" class="pic__area--input" name="item_image" id="item_img" accept="image/jpeg" onchange="previewImage(this)">
-                <label for="item_img" class="pic__area--lbl">画像を選択してください</label>
+                <input type="file" class="pic__area--input" name="item_image" id="select_img" accept="image/jpeg" onchange="previewImage(this)">
+                <label for="select_img" class="pic__area--lbl">画像を選択してください</label>
             </div>
         </div>
         <div class="form__group--error">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="input__group">
                     <p class="input__group--lbl">商品名</p>
-                    <input type="text" class="input__group--item" id="item_name" name="item_name" value="{{old('item_name')}}">
+                    <input type="text" class="input__group--item" name="item_name" value="{{old('item_name')}}">
                 </div>
                 <div class="form__group--error">
                     @error('item_name')
@@ -84,7 +84,7 @@
                 </div>
                 <div class="input__group">
                     <p class="input__group--lbl">商品の説明</p>
-                    <textarea name="item_detail" id="item_detail" class="input__group--text">{{old('item_detail')}}</textarea>
+                    <textarea name="item_detail" class="input__group--text">{{old('item_detail')}}</textarea>
                 </div>
                 <div class="form__group--error">
                     @error('item_detail')
@@ -93,7 +93,7 @@
                 </div>
                 <div class="input__group price">
                     <p class="input__group--lbl">販売価格</p>
-                    <input type="int" class="input__group--item" id="item_price" name="item_price" value="{{old('item_price')}}">
+                    <input type="int" class="input__group--item item_price" name="item_price" value="{{old('item_price')}}">
                 </div>
                 <div class="form__group--error">
                     @error('item_price')

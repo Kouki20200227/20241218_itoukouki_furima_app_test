@@ -24,28 +24,26 @@ class AuthorController extends Controller
     // ログイン済みトップページ表示処理
     public function user_index(Request $request){
         $query = $request->query('page', null);
+        // おすすめの処理
         if(is_null($query)){
             if($request->has('keyword')){
-                $items = $this->search_Index($request->keyword);
+                $items = $this->search_Index($request->keyword)->get();
             }else{
                 $items = Item::all();
             }
-        }elseif($query === 'mylist'){
-            if($request->has('keyword')){
-                $items = $this->search_Index($request->keyword)->whereHas('favorites', function ($query) {
-                    $query->where('user_id', Auth::id());
-                })->get();
-            }else{
+        }
+        // マイリストの処理
+        elseif($query === 'mylist'){
                 $items = Item::whereHas('favorites',    function ($query) {
                     $query->where('user_id', Auth::id());
                 })->get();
-            }
         }
+
         return view('index', compact('items'));
     }
 
     private function search_Index($keyword){
-        $result = Item::where('item_name', 'LIKE', "%{$keyword}%")->get();
+        $result = Item::where('item_name', 'LIKE', "%{$keyword}%");
 
         return $result;
     }
@@ -63,7 +61,7 @@ class AuthorController extends Controller
         $image = $request->file('item_image')->getClientOriginalName();
         $path = 'storage/item_img/' . $image;
         if(!Storage::exists($image)){
-            $request->file('item_img')->storeAs('public/item_img', $image);
+            $request->file('item_image')->storeAs('public/item_img', $image);
         }
         // 商品登録処理
         $form = $this->itemSet($request, $path);
@@ -82,6 +80,7 @@ class AuthorController extends Controller
             'item_name' => $request->item_name,
             'item_detail' => $request->item_detail,
             'item_price' => $request->item_price,
+            'item_buy_flg' => 0,
         ];
 
         return $form;

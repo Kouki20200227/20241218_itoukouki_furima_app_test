@@ -146,16 +146,17 @@ select {
     height: 10vh;
     padding: 1vh 1vw;
 }
-.price{
+.price {
     position: relative;
 }
-.price::before{
+.price::before {
     position: absolute;
-    content: '¥';
+    content: "¥";
     top: 50%;
     left: 2%;
 }
-#item_price{
+.item__group--item,
+.item_price {
     padding-left: 2vw;
 }
 
@@ -175,6 +176,6 @@ select {
     border-radius: 5px;
 }
 
-.form__group--error{
+.form__group--error {
     color: red;
 }
