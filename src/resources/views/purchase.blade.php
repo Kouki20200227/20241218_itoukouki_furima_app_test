@@ -16,7 +16,7 @@
                     <img src="{{asset($item->item_image)}}" class="detail__group--img">
                     <div class="item__tag">
                         <p class="detail__tag--ttl">{{$item->item_name}}</p>
-                        ¥ <input type="number" name="item_price" class="detail__tag--price" readonly value="{{$item->item_price}}">
+                        ¥ <input type="numbers" name="item_price" class="detail__tag--price" readonly value="{{number_format($item->item_price)}}">
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="address__tag">
                     @if (session('post_code'))
                     <div class="post_code__area">
-                        〒 <input type="text" name="post_code" class="address__tag--txt" readonly value="{{session('post_code')}}">
+                        〒 <input type="text" name="post_code" class="address__tag--txt" readonly value="{{substr(session('post_code'), 0, 3) . '-' . substr(session('post_code'), 3, 4)}}">
                     </div>
                     <div class="address__area">
                         <p class="address__tag--txt">{{session('address') . session('building')}}</p>
@@ -56,7 +56,7 @@
                     </div>
                     @else
                         <div class="post_code__area">
-                            〒 <input type="text" name="post_code" class="address__tag--txt" readonly value="{{$profile->profile_post_code}}">
+                            〒 <input type="text" name="post_code" class="address__tag--txt" readonly value="{{substr($profile->profile_post_code, 0, 3) . '-' . substr($profile->profile_post_code, 3, 4)}}">
                         </div>
                         <div class="address__area">
                             <p class="address__tag--txt">{{$profile->profile_address . $profile->profile_building}}</p>
@@ -75,7 +75,6 @@
                 </tr>
                 <tr>
                     <th><p class="table__header">支払い方法</p></th>
-                    <!-- <td><p class="table__lbl">コンビニ払い</p></td> -->
                     <td><input type="text" class="table__lbl" id="outputBox" readonly></td>
                 </tr>
             </table>

@@ -60,7 +60,7 @@ class AuthorController extends Controller
         // 選択画像セット
         $image = $request->file('item_image')->getClientOriginalName();
         $path = 'storage/item_img/' . $image;
-        if(!Storage::exists($image)){
+        if(!Storage::exists('public/item_img' . $image)){
             $request->file('item_image')->storeAs('public/item_img', $image);
         }
         // 商品登録処理
@@ -87,11 +87,14 @@ class AuthorController extends Controller
     }
 
 
-
     // 商品詳細画面表示処理
     public function item_index($item_id){
         // 出品物照会処理
         $item = Item::where('id', $item_id)->with('categories', 'comments', 'condition')->withCount('favorites', 'comments')->first();
+        // ログイン後のバグ警戒
+        if(Auth::check() && ($item->user_id === Auth::id())){
+            return redirect('/');
+        }
 
         return view('item', ['item' => $item,]);
     }
@@ -100,6 +103,12 @@ class AuthorController extends Controller
             $this->favoriteStore($item_id);
             return redirect(route('item.index', ['item_id' => $item_id]));
         }elseif(isset($_POST['comment_btn'])){
+            $validated = $request->validate([
+                'comment' => 'required',
+            ],
+    [
+                'comment.required' => 'コメントは必ず入力してください',
+            ]);
             $this->commentStore($item_id, $request);
             return redirect(route('item.index', ['item_id' => $item_id]));
         }
@@ -164,7 +173,7 @@ class AuthorController extends Controller
         // イメージ取得
         $image = $request->file('profile_image')->getClientOriginalName();
         // 画像存在チェック
-        if(!Storage::exists($image)){
+        if(!Storage::exists('/public/profile_img' . $image)){
             $request->file('profile_image')->storeAs('public/profile_img', $image);
         }
         $path = 'storage/profile_img/' . $image;
@@ -186,7 +195,11 @@ class AuthorController extends Controller
         // イメージパス取得
         if(isset($request->profile_image)){
             $image = $request->file('profile_image')->getClientOriginalName();
-            $request->file('profile_image')->storeAs('public/profile_img', $image);
+            $file = $request->file('profile_image');
+            dd($file);
+            if(!Storage::exists( 'public/profile_img' . $image)){
+                $request->file('profile_image')->storeAs('public/profile_img', $image);
+            }
             $path = 'storage/profile_img/' . $image;
         }else{
             $path = $profile->profile_image;
@@ -212,9 +225,9 @@ class AuthorController extends Controller
         $validated = $request->validate([
             'payment_method' => 'filled',
         ],
-    [
-        'payment_method.filled' => '支払い方法を選択してください',
-    ]);
+[
+            'payment_method.filled' => '支払い方法を選択してください',
+        ]);
 
         $form = $this->setPurchaseData($request);
         Purchase::create($form); //購入情報登録
