@@ -17,6 +17,8 @@ Laravel環境構築
     4. php artisan key:generate
     5. php artisan migrate
     6. php artisan db:seed
+    7. php artisan storage:link
+    8. storage/app/publicの下に「item_img」「profile_img」というディレクトリを作成すること
     ※seederファイルは誤作動しないようにコメント化してあるためコメントを外してください
 
 使用技術
@@ -35,7 +37,7 @@ URL
 ・開発環境 : http://localhost/
 ・phpMyAdmin : http://localhost:8080/
 
-留意点
+注意点
 ・画像をアップロードする際は2M以内の画像をアップロードしてください
 　アップロード可能なメモリ容量の増やす設定をphp.iniに記載してありますが、反映されていないためです。
 　また、2Mより大きい画像をアップロードするとエラーメッセージが表示されるようにバリデーションは施してあります

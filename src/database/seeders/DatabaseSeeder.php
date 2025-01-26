@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(ItemTableSeeder::class);
         // $this->call(CategoryTableSeeder::class);
         // $this->call(ConditionTableSeeder::class);
-        $this->call(CategoryItemSeeder::class);
-        $this->call(UserSeeder::class);
+        // $this->call(CategoryItemSeeder::class);
+        // $this->call(UserSeeder::class);
 
         // テーブル内データ一括削除
         // \App\Models\Item::truncate();
