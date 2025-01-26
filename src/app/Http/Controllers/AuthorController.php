@@ -34,7 +34,7 @@ class AuthorController extends Controller
         }
         // マイリストの処理
         elseif($query === 'mylist'){
-                $items = Item::whereHas('favorites',    function ($query) {
+                $item = Item::whereHas('favorites', function($query) {
                     $query->where('user_id', Auth::id());
                 })->get();
         }
